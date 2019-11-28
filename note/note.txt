@@ -1,0 +1,21 @@
+日志实现
+jdk自带 logging  简陋
+log4j
+log4j2 apache   极致性能高 太先进
+logback
+
+日志门面
+jcl apache
+slf4j
+jboss-logging
+
+
+log4j slf4j logback  是同个人开发，log4j太烂，开发了logback
+
+
+logback-spring.xml 配置类型多
+eg:区分info和error文件
+eg:
+
+
+Build ->  Build Project 可以热部署  模板文件

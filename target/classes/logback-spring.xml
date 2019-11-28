@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+    <!--logback类-->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <!--展示配置-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+    <!--时间收集，info日志-->
+    <appender name="fileInfoLogo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--&lt;!&ndash;过滤等级&ndash;&gt;-->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+            <!--&lt;!&ndash;禁止ERROR,接收其他&ndash;&gt;-->
+            <!--<level>ERROR</level>-->
+            <!--<onMatch>DENY</onMatch>-->
+            <!--<onMisMatch>ACCEPT</onMisMatch>-->
+        <!--</filter>-->
+        <encoder>
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </encoder>
+
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>
+                /Users/xmly/var/log/sell/info.%d.log
+            </fileNamePattern>cd
+        </rollingPolicy>
+    </appender>
+    <!--时间收集,error日志-->
+    <appender name="fileErrorLogo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!--过滤范围-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+
+        <encoder>
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </encoder>
+
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>
+                /Users/xmly/var/log/sell/error.%d.log
+            </fileNamePattern>cd
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="consoleLog"/>
+        <appender-ref ref="fileInfoLogo"/>
+        <appender-ref ref="fileErrorLogo"/>
+    </root>
+</configuration>

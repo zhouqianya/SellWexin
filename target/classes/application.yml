@@ -1,0 +1,51 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /sell
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 12345678
+    url: jdbc:mysql://localhost/sell?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+ #\u63A5\u53E3\u8FD4\u56DE \u7A7A\u7684\u5B57\u6BB5\u4E0D\u8FD4\u56DE\uFF0C\u9664\u975E\u521D\u59CB\u5316\u8D4B\u503C\u4E86
+  jackson:
+    default-property-inclusion: non_null
+  freemarker:
+    suffix: .ftl
+  redis:
+    host: localhost
+    password:
+    port: 6379
+
+
+
+
+wechat:
+  #appid 公众号id 公众号填的授权域名 需要和请求微信授权域名一直
+#  mpAppId: wx43ba128d1342e4ba
+#  mpAppSecret: 9d89fa1185536a6e239ed13ece6d7b3b
+#\u501F\u7528\u652F\u4ED8\u8D26\u53F7
+  mpAppId: wxd898fcb01713c658
+  #开放平台配置
+  openAppId:
+  openAddSecret:
+  #支付配置
+  mchId: 1483469312
+  mchKey: 098F6BCD4621D373CADE4E832627B4F6
+  keyPath: /Users/xmly/code/src/main/resources/h5.p12
+
+  notifyUrl: http://henhaoji.nat300.top/sell/pay/notify
+#  notifyUrl: http://sell.natapp4.cc/sell/pay/notify
+#  notifyUrl: http://192.168.1.8:8222/sell/pay/notify
+
+#myopenid:oqapPwY4eEWz1pSOwAePVkIeIWKM
+#logging:
+#  pattern:
+#    dateformat:
+#    console:
+#  file:
+#    path:
+#  level:
