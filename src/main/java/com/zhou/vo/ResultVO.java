@@ -3,6 +3,8 @@ package com.zhou.vo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * @program sell
  * @description:
@@ -11,7 +13,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class ResultVO <T>{
+public class ResultVO <T> implements Serializable {
+
+    private static final long serialVersionUID = 8119724539082138916L;
 
     private Integer code;
     private String msg;

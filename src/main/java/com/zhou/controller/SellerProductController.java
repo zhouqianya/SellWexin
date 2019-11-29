@@ -12,6 +12,9 @@ import com.zhou.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -100,7 +103,15 @@ public class SellerProductController {
         return new ModelAndView("product/index");
     }
 
+    /**
+     *  与  @Cacheable(cacheNames = "product",key = "123") 对应
+     *  修改的成功时候，会把保存的对象 存到cacheNames = "product",key = "123" 里面去，但是 返回对象需要和缓存里对象一直
+     *
+     *  修改的成功时候，会清除缓存 @CacheEvict(cacheNames = "product",key = "123")
+     *
+     */
     @PostMapping("save")
+    @CacheEvict(cacheNames = "product",key = "123")
     public ModelAndView save(@Valid ProductForm productForm, BindingResult bindingResult, Map<String, Object> map) {
 
         log.info("productForm ={}", JsonUtil.toJson(productForm));

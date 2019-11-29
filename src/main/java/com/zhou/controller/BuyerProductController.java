@@ -9,8 +9,11 @@ import com.zhou.vo.ProductInfoVO;
 import com.zhou.vo.ProductVO;
 import com.zhou.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cache;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +31,7 @@ import java.util.stream.Collectors;
 @RestController
 @Slf4j
 @RequestMapping("/buyer/product")
+@CacheConfig(cacheNames = "product")  //整个类的cacheNames = "product"x
 public class BuyerProductController {
 
     @Autowired
@@ -36,7 +40,14 @@ public class BuyerProductController {
     @Autowired
     CategoryService categoryService;
 
+    /**
+     * 存在redis里面
+     *  product文件夹，下有个product
+     *  key不填 默认是方法参数
+     * 有缓存后不会执行方法体
+     */
     @GetMapping("/list")
+    @Cacheable(key = "123")
     public ResultVO list() {
 
         //当前上架商品
