@@ -166,5 +166,12 @@
     <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.43.Final" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-websocket:2.2.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:5.2.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:5.2.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.2" level="project" />
   </component>
 </module>

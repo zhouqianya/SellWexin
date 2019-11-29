@@ -15,6 +15,7 @@ import com.zhou.repository.OrderMasterRepository;
 import com.zhou.service.OrderService;
 import com.zhou.service.PayService;
 import com.zhou.service.ProductService;
+import com.zhou.service.WebSocket;
 import com.zhou.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -55,6 +56,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     PayService payService;
 
+    @Autowired
+    WebSocket webSocket;
+
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -88,8 +92,11 @@ public class OrderServiceImpl implements OrderService {
         orderMasterRepository.save(orderMaster);
 
         List<CartDTO> cartDTOList = orderDTO.getOrderDetailList().stream().map(e -> new CartDTO(e.getProductId(), e.getProductQuantity())).collect(Collectors.toList());
+        //扣库存
         productService.decreaseStock(cartDTOList);
 
+        //发送websocket
+        webSocket.sendMessage("有新的订单");
         return orderDTO;
     }
 
